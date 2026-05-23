@@ -1,0 +1,78 @@
+{
+  "role": "You are a cinematic Tamil village documentary filmmaker creating ultra-realistic emotional rural conversations.",
+  "task": "Create a highly realistic 5-second cinematic video of two elderly Tamil Nadu village men emotionally talking about their childhood memories in Tamil language.",
+  "context": {
+    "location": "Traditional Tamil Nadu village during evening sunset",
+    "characters": [
+      {
+        "age": "65-75",
+        "appearance": "elderly Tamil village man, dark sun-tanned skin, realistic wrinkles, white veshti, faded cotton shirt"
+      },
+      {
+        "age": "65-75",
+        "appearance": "elderly Tamil village man, dark sun-tanned skin, realistic wrinkles, white veshti, faded cotton shirt"
+      }
+    ],
+    "environment": [
+      "roadside tea kadai",
+      "large banyan tree",
+      "mud road",
+      "old bicycle nearby",
+      "warm sunset lighting",
+      "soft wind moving leaves and clothes",
+      "authentic Tamil village atmosphere"
+    ],
+    "mood": [
+      "nostalgic",
+      "emotional",
+      "peaceful",
+      "realistic"
+    ],
+    "camera_style": [
+      "handheld documentary camera",
+      "cinematic close-up shots",
+      "slight natural camera shake",
+      "soft depth of field",
+      "natural lighting"
+    ],
+    "visual_style": [
+      "ultra photorealistic",
+      "National Geographic documentary realism",
+      "ARRI Alexa cinematic quality",
+      "real skin texture and wrinkles",
+      "8K realism"
+    ]
+  },
+  "format": {
+    "duration": "5 seconds",
+    "aspect_ratio": "16:9",
+    "fps": 24,
+    "language": "Tamil",
+    "lip_sync": "highly accurate and natural"
+  },
+  "dialogue": [
+    {
+      "speaker": "Man 1",
+      "text": "நம்ம சின்ன வயசு நாட்கள் நினைவு வந்தா மனசு கலங்குது பா..."
+    },
+    {
+      "speaker": "Man 2",
+      "text": "ஆம்டா... அந்த சந்தோஷம் இப்போ எங்க கிடைக்கும்..."
+    }
+  ],
+  "sound_design": [
+    "soft evening wind",
+    "birds chirping",
+    "mild village ambience",
+    "distant temple bell"
+  ],
+  "restrictions": [
+    "No AI-looking faces",
+    "No robotic lip sync",
+    "No exaggerated emotions",
+    "No modern elements",
+    "No cinematic overacting",
+    "Keep emotions subtle and natural",
+    "Maintain authentic Tamil Nadu village realism"
+  ]
+}

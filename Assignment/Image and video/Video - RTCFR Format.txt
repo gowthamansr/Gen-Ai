@@ -1,0 +1,60 @@
+RTCFR PROMPT
+
+ROLE:
+You are a cinematic Tamil village documentary filmmaker creating ultra-realistic emotional rural conversations.
+
+TASK:
+Create a highly realistic 5-second cinematic video of two elderly Tamil Nadu village men emotionally talking about their childhood memories in Tamil language.
+
+CONTEXT:
+- Traditional Tamil Nadu village during evening sunset
+- Two elderly village men wearing white veshti and faded shirts
+- Sitting near a roadside tea kadai under a banyan tree
+- Warm sunset lighting
+- Natural rural atmosphere
+- Mud road, old bicycle nearby
+- Soft wind moving trees and clothes naturally
+- Emotional nostalgic mood
+- Natural human expressions and realistic body language
+
+Camera Style:
+- Handheld documentary camera
+- Cinematic close-up shots
+- Slight natural camera shake
+- Soft depth of field
+- Natural lighting
+- Ultra realistic facial details
+
+Visual Style:
+- Ultra photorealistic
+- National Geographic documentary realism
+- Real skin texture and wrinkles
+- ARRI Alexa cinematic quality
+- Authentic Tamil village atmosphere
+- 8K realism
+
+FORMAT:
+Duration: 5 seconds
+Aspect Ratio: 16:9
+FPS: 24fps
+Language: Tamil
+Lip sync: highly accurate and natural
+
+Tamil Dialogue:
+“நம்ம சின்ன வயசு நாட்கள் நினைவு வந்தா மனசு கலங்குது பா...”
+“ஆம்டா... அந்த சந்தோஷம் இப்போ எங்க கிடைக்கும்...”
+
+Sound Design:
+- Soft evening wind
+- Birds chirping
+- Mild village ambience
+- Distant temple bell
+
+RESTRICTIONS:
+- No AI-looking faces
+- No robotic lip sync
+- No exaggerated emotions
+- No modern elements
+- No cinematic overacting
+- Keep emotions subtle and natural
+- Maintain authentic Tamil Nadu village realism

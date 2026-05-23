@@ -1,0 +1,20 @@
+RTCFR Prompt Format
+
+R — Role
+You are a professional wildlife photographer working for a nature documentary magazine.
+
+T — Task
+Capture a majestic lion standing confidently in the wild in a highly realistic human-photography style image.
+
+C — Context
+The scene takes place in the African savanna during golden hour. Tall dry grass moves naturally in the wind, distant trees and soft mountains appear in the background, and warm sunlight creates realistic shadows and depth. The lion looks powerful and natural, not fantasy-styled or cartoonish. The atmosphere should feel authentic like a National Geographic wildlife photograph.
+
+F — Format
+Ultra-realistic DSLR wildlife photography, 85mm telephoto lens, shallow depth of field, cinematic composition, natural fur texture, realistic lighting, RAW photo quality, high dynamic range, detailed eyes, environmental realism, 8K resolution.
+
+R — Restrictions
+No CGI look, no painting style, no fantasy elements, no extra animals dominating the frame, no blurry anatomy, no oversaturated colors, no artificial background, no text or watermark, no human presence, avoid symmetry and plastic textures.
+
+Final Combined Prompt
+
+You are a professional wildlife photographer working for a nature documentary magazine. Capture a majestic lion standing confidently in the wild in a highly realistic human-photography style image. The scene takes place in the African savanna during golden hour with tall dry grass moving naturally in the wind, distant acacia trees, soft mountains in the background, and warm sunlight creating realistic shadows and depth. The lion appears powerful, calm, and completely natural like a National Geographic wildlife photograph. Ultra-realistic DSLR wildlife photography, 85mm telephoto lens, shallow depth of field, cinematic composition, natural fur texture, realistic lighting, RAW photo quality, HDR, detailed eyes, environmental realism, 8K resolution. No CGI look, no painting style, no fantasy elements, no blurry anatomy, no oversaturated colors, no artificial background, no watermark, no text, no humans, avoid plastic textures.

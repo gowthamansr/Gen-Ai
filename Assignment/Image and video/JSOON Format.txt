@@ -1,0 +1,17 @@
+{
+  "prompt": "A majestic adult male lion standing in the wild African savannah during golden hour, captured in ultra-realistic human photography style. Natural lighting, detailed fur texture, sharp eyes, cinematic composition, realistic shadows, authentic wilderness environment with dry grass, distant trees, and subtle dust in the air. Shot with a professional DSLR camera, 85mm lens, shallow depth of field, National Geographic style wildlife photography, highly detailed, photorealistic, natural colors, realistic atmosphere, no CGI look.",
+  "negative_prompt": "cartoon, illustration, painting, CGI, 3D render, fantasy, blurry, low quality, oversaturated colors, distorted anatomy, extra limbs, artificial lighting, unrealistic background, duplicate animals, watermark, text, noise",
+  "style": "photorealistic wildlife photography",
+  "camera_settings": {
+    "camera": "Canon EOS R5",
+    "lens": "85mm f/1.8",
+    "aperture": "f/2.8",
+    "iso": 200,
+    "shutter_speed": "1/1000s"
+  },
+  "lighting": "golden hour natural sunlight",
+  "aspect_ratio": "16:9",
+  "resolution": "4K",
+  "mood": "majestic, calm, natural",
+  "environment": "African savannah wilderness"
+}
