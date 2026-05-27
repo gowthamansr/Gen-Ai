@@ -4,7 +4,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
 
-# 0. Set up your API key (Replace with your actual OpenAI key)
+
 
 # =====================================================================
 # 1. THE PROMPT
