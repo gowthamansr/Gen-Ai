@@ -5,7 +5,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
 
 # 0. Set up your API key (Replace with your actual OpenAI key)
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = ""
 
 # =====================================================================
 # 1. THE PROMPT
