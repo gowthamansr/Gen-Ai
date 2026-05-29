@@ -1,235 +1,317 @@
-# ==========================================================
-# PDF KNOWLEDGE BASE AI ASSISTANT USING LANGCHAIN
-# ==========================================================
-
-# This project demonstrates:
-#
-# 1. PDF Loading
-# 2. Text Splitting
-# 3. Embeddings
-# 4. Vector Database
-# 5. Retrieval
-# 6. Prompting
-# 7. LLM Response Generation
-#
-# Architecture:
-#
-# PDF → Chunks → Embeddings → Vector DB
-#                                  ↓
-# User Question → Retriever → LLM → Answer
-# ==========================================================
-
-
-# ==========================================================
-# STEP 1: LOAD ENVIRONMENT VARIABLES
-# ==========================================================
-
 from dotenv import load_dotenv
-
 load_dotenv()
 
+import os
+import streamlit as st
 
-# ==========================================================
-# STEP 2: IMPORT REQUIRED COMPONENTS
-# ==========================================================
-
-# PDF Loader
-# Reads PDF documents
 from langchain_community.document_loaders import PyPDFLoader
-
-
-# Text Splitter
-# Splits large text into smaller chunks
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-
-# OpenAI Embeddings
-# Converts text into vector representations
 from langchain_openai import OpenAIEmbeddings
-
-
-# FAISS Vector Store
-# Stores and searches vectors efficiently
-from langchain_community.vectorstores import FAISS
-
-
-# ChatOpenAI Model
-# Main LLM used for answering questions
 from langchain_openai import ChatOpenAI
 
+from langchain_community.vectorstores import FAISS
 
-# Prompt Template
-# Creates structured prompts
 from langchain_core.prompts import ChatPromptTemplate
-
-
-# Output Parser
-# Converts response into plain text
 from langchain_core.output_parsers import StrOutputParser
 
 
-# ==========================================================
-# STEP 3: LOAD PDF DOCUMENT
-# ==========================================================
+# =====================================================
+# PAGE CONFIG
+# =====================================================
 
-# Load the PDF file
-loader = PyPDFLoader("xuv700-sample.pdf")
-
-# Extract text from PDF
-documents = loader.load()
-
-print(f"Loaded {len(documents)} pages from PDF")
-
-
-# ==========================================================
-# STEP 4: SPLIT DOCUMENT INTO CHUNKS
-# ==========================================================
-
-# Why splitting is needed:
-#
-# LLMs cannot process extremely large text at once.
-#
-# So we divide text into smaller overlapping chunks.
-
-text_splitter = RecursiveCharacterTextSplitter(
-    
-    # Maximum size of each chunk
-    chunk_size=1000,
-    
-    # Overlap between chunks
-    # Helps preserve context
-    chunk_overlap=200
+st.set_page_config(
+    page_title="Mahindra XUV700 AI Assistant",
+    page_icon="🚘",
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
-# Create chunks
-chunks = text_splitter.split_documents(documents)
+# =====================================================
+# CUSTOM CSS
+# =====================================================
 
-print(f"Created {len(chunks)} text chunks")
+st.markdown("""
+<style>
 
+.main-header {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
 
-# ==========================================================
-# STEP 5: CREATE EMBEDDINGS
-# ==========================================================
+.sub-header {
+    color: gray;
+    margin-bottom: 20px;
+}
 
-# Embeddings convert text into numerical vectors.
-#
-# Similar meaning → similar vectors.
+.metric-card {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+}
 
-embeddings = OpenAIEmbeddings()
+</style>
+""", unsafe_allow_html=True)
 
+# =====================================================
+# SIDEBAR
+# =====================================================
 
-# ==========================================================
-# STEP 6: STORE EMBEDDINGS IN VECTOR DATABASE
-# ==========================================================
+with st.sidebar:
 
-# FAISS stores vectors locally.
-#
-# It allows semantic similarity search.
+    st.title("🚘 XUV700")
 
-vectorstore = FAISS.from_documents(
-    chunks,
-    embeddings
+    st.markdown("---")
+
+    st.markdown("### Assistant Features")
+
+    st.markdown("""
+    ✅ Specifications
+
+    ✅ Features
+
+    ✅ Safety
+
+    ✅ Variants
+
+    ✅ Technology
+
+    ✅ Performance
+    """)
+
+    st.markdown("---")
+
+    if st.button("🗑️ Clear Chat"):
+
+        st.session_state.messages = []
+
+        st.rerun()
+
+# =====================================================
+# HEADER
+# =====================================================
+
+st.markdown(
+    '<div class="main-header">Mahindra XUV700 AI Assistant</div>',
+    unsafe_allow_html=True
 )
 
-print("Vector database created successfully")
-
-
-# ==========================================================
-# STEP 7: CREATE RETRIEVER
-# ==========================================================
-
-# Retriever searches for relevant chunks
-# based on user question.
-
-retriever = vectorstore.as_retriever(
-
-    # Number of chunks to retrieve
-    search_kwargs={"k": 3}
+st.markdown(
+    '<div class="sub-header">Ask questions directly from the brochure</div>',
+    unsafe_allow_html=True
 )
 
+# =====================================================
+# PDF CHECK
+# =====================================================
 
-# ==========================================================
-# STEP 8: CREATE LLM
-# ==========================================================
+PDF_FILE = "xuv700-sample.pdf"
 
-llm = ChatOpenAI(
-    model="gpt-4.1-mini",
-    temperature=0
+if not os.path.exists(PDF_FILE):
+
+    st.error(f"PDF file not found: {PDF_FILE}")
+
+    st.stop()
+
+# =====================================================
+# LOAD RAG
+# =====================================================
+
+@st.cache_resource
+def initialize_rag():
+
+    loader = PyPDFLoader(PDF_FILE)
+
+    documents = loader.load()
+
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200
+    )
+
+    chunks = splitter.split_documents(documents)
+
+    embeddings = OpenAIEmbeddings()
+
+    vectorstore = FAISS.from_documents(
+        chunks,
+        embeddings
+    )
+
+    retriever = vectorstore.as_retriever(
+        search_kwargs={"k": 3}
+    )
+
+    llm = ChatOpenAI(
+        model="gpt-4.1-mini",
+        temperature=0
+    )
+
+    prompt = ChatPromptTemplate.from_template(
+        """
+You are a Mahindra XUV700 product specialist.
+
+Previous Conversation:
+{history}
+
+Brochure Context:
+{context}
+
+Customer Question:
+{question}
+
+Instructions:
+
+- Use brochure information only.
+- Mention specifications when available.
+- Mention variant names if applicable.
+- Be concise and professional.
+- If answer is unavailable, say:
+  "I could not find that information in the brochure."
+"""
+    )
+
+    parser = StrOutputParser()
+
+    chain = prompt | llm | parser
+
+    return retriever, chain, len(documents), len(chunks)
+
+
+retriever, chain, page_count, chunk_count = initialize_rag()
+
+# =====================================================
+# STATS
+# =====================================================
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.metric("Pages Loaded", page_count)
+
+with col2:
+    st.metric("Knowledge Chunks", chunk_count)
+
+st.markdown("---")
+
+# =====================================================
+# SUGGESTED QUESTIONS
+# =====================================================
+
+with st.expander("💡 Suggested Questions"):
+
+    st.markdown("""
+    - What engine options are available?
+    - What ADAS features are included?
+    - What safety features does the XUV700 offer?
+    - What is the boot space?
+    - Compare AX7 and AX7L.
+    - What infotainment features are available?
+    """)
+
+# =====================================================
+# SESSION STATE
+# =====================================================
+
+if "messages" not in st.session_state:
+
+    st.session_state.messages = [
+        {
+            "role": "assistant",
+            "content":
+            """
+Welcome to the Mahindra XUV700 AI Assistant.
+
+Ask me anything about:
+
+• Features
+• Specifications
+• Variants
+• Safety
+• Technology
+• Performance
+            """
+        }
+    ]
+
+# =====================================================
+# DISPLAY CHAT
+# =====================================================
+
+for message in st.session_state.messages:
+
+    with st.chat_message(message["role"]):
+
+        st.markdown(message["content"])
+
+# =====================================================
+# USER INPUT
+# =====================================================
+
+question = st.chat_input(
+    "Ask about XUV700..."
 )
 
+if question:
 
-# ==========================================================
-# STEP 9: CREATE PROMPT TEMPLATE
-# ==========================================================
+    st.session_state.messages.append(
+        {
+            "role": "user",
+            "content": question
+        }
+    )
 
-prompt = ChatPromptTemplate.from_template(
-    """
-    You are an AI assistant.
+    with st.chat_message("user"):
+        st.markdown(question)
 
-    Answer the user's question ONLY using the provided context.
+    history_text = ""
 
-    Context:
-    {context}
+    for msg in st.session_state.messages:
 
-    Question:
-    {question}
+        history_text += (
+            f"{msg['role']}: {msg['content']}\n"
+        )
 
-    If the answer is not in the context,
-    say:
-    "I could not find the answer in the document."
-    """
-)
+    retrieved_docs = retriever.invoke(question)
 
+    context_text = "\n\n".join(
+        doc.page_content
+        for doc in retrieved_docs
+    )
 
-# ==========================================================
-# STEP 10: CREATE OUTPUT PARSER
-# ==========================================================
+    source_pages = []
 
-output_parser = StrOutputParser()
+    for doc in retrieved_docs:
 
+        if "page" in doc.metadata:
 
-# ==========================================================
-# STEP 11: ASK USER QUESTION
-# ==========================================================
+            source_pages.append(
+                str(doc.metadata["page"] + 1)
+            )
 
-question = input("Ask a question about the PDF: ")
+    with st.chat_message("assistant"):
 
+        with st.spinner("Searching brochure..."):
 
-# ==========================================================
-# STEP 12: RETRIEVE RELEVANT CHUNKS
-# ==========================================================
+            answer = chain.invoke(
+                {
+                    "history": history_text,
+                    "context": context_text,
+                    "question": question
+                }
+            )
 
-# Semantic search happens here
+        st.markdown(answer)
 
-retrieved_docs = retriever.invoke(question)
+        if source_pages:
 
+            st.caption(
+                f"📄 Source Pages: {', '.join(sorted(set(source_pages)))}"
+            )
 
-# Combine retrieved chunks into one context string
-context_text = "\n\n".join(
-    doc.page_content for doc in retrieved_docs
-)
-
-
-# ==========================================================
-# STEP 13: CREATE CHAIN
-# ==========================================================
-
-chain = prompt | llm | output_parser
-
-
-# ==========================================================
-# STEP 14: GENERATE RESPONSE
-# ==========================================================
-
-response = chain.invoke({
-    "context": context_text,
-    "question": question
-})
-
-
-# ==========================================================
-# STEP 15: PRINT RESPONSE
-# ==========================================================
-
-print("\n================ ANSWER ================\n")
-print(response)
+    st.session_state.messages.append(
+        {
+            "role": "assistant",
+            "content": answer
+        }
+    )
