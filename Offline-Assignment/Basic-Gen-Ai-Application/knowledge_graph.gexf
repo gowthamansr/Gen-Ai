@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2026-06-02">
+    <creator>NetworkX 3.6.1</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <attributes mode="static" class="edge">
+      <attribute id="1" title="relation" type="string" />
+    </attributes>
+    <attributes mode="static" class="node">
+      <attribute id="0" title="type" type="string" />
+    </attributes>
+    <nodes>
+      <node id="international travelers" label="international travelers">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="valid passport" label="valid passport">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="at least 6 months validity" label="at least 6 months validity">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="curated itineraries" label="curated itineraries">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="Japan" label="Japan">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="Louvre Museum" label="Louvre Museum">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="Tuesdays" label="Tuesdays">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="advanced digital reservations" label="advanced digital reservations">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="mandatory" label="mandatory">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="budget optimization" label="budget optimization">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="Parc de Belleville" label="Parc de Belleville">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="panoramic city views" label="panoramic city views">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="completely free" label="completely free">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="uncrowded" label="uncrowded">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="Tokyo" label="Tokyo">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="Pasmo or Suica IC card" label="Pasmo or Suica IC card">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="Haneda/Narita airport" label="Haneda/Narita airport">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+      <node id="seamless subway transit" label="seamless subway transit">
+        <attvalues>
+          <attvalue for="0" value="Entity" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="international travelers" target="valid passport" id="0">
+        <attvalues>
+          <attvalue for="1" value="require" />
+        </attvalues>
+      </edge>
+      <edge source="valid passport" target="at least 6 months validity" id="1">
+        <attvalues>
+          <attvalue for="1" value="has" />
+        </attvalues>
+      </edge>
+      <edge source="curated itineraries" target="Japan" id="2">
+        <attvalues>
+          <attvalue for="1" value="for" />
+        </attvalues>
+      </edge>
+      <edge source="Louvre Museum" target="Tuesdays" id="3">
+        <attvalues>
+          <attvalue for="1" value="CLOSED_ON" />
+        </attvalues>
+      </edge>
+      <edge source="advanced digital reservations" target="mandatory" id="4">
+        <attvalues>
+          <attvalue for="1" value="ARE" />
+        </attvalues>
+      </edge>
+      <edge source="budget optimization" target="Parc de Belleville" id="5">
+        <attvalues>
+          <attvalue for="1" value="RECOMMENDS_CHECKING_OUT" />
+        </attvalues>
+      </edge>
+      <edge source="Parc de Belleville" target="panoramic city views" id="6">
+        <attvalues>
+          <attvalue for="1" value="HAS_FEATURE" />
+        </attvalues>
+      </edge>
+      <edge source="Parc de Belleville" target="completely free" id="7">
+        <attvalues>
+          <attvalue for="1" value="IS" />
+        </attvalues>
+      </edge>
+      <edge source="Parc de Belleville" target="uncrowded" id="8">
+        <attvalues>
+          <attvalue for="1" value="IS" />
+        </attvalues>
+      </edge>
+      <edge source="Tokyo" target="Pasmo or Suica IC card" id="9">
+        <attvalues>
+          <attvalue for="1" value="SUGGEST_PURCHASING" />
+        </attvalues>
+      </edge>
+      <edge source="Pasmo or Suica IC card" target="Haneda/Narita airport" id="10">
+        <attvalues>
+          <attvalue for="1" value="AVAILABLE_AT" />
+        </attvalues>
+      </edge>
+      <edge source="Pasmo or Suica IC card" target="seamless subway transit" id="11">
+        <attvalues>
+          <attvalue for="1" value="USED_FOR" />
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>

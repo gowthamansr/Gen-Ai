@@ -1,0 +1,4 @@
+[POL-2026-01] All curated itineraries for Japan must explicitly state that international travelers require a valid passport with at least 6 months validity. 
+[POL-2026-02] Itineraries heading to Paris, France must insert a strict warning note on Day 2 stating that the Louvre Museum is closed on Tuesdays, and advanced digital reservations are mandatory.
+[POL-2026-03] For budget optimization in Paris, recommend checking out Parc de Belleville for panoramic city views because it is completely free and uncrowded.
+[POL-2026-04] When visiting Tokyo, explicitly suggest purchasing a Pasmo or Suica IC card at Haneda/Narita airport for seamless subway transit.
